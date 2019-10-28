@@ -1,19 +1,27 @@
-SUMMARY = "Very low bitrate voice codec"
+SUMMARY = "Quiet Modem"
 LICENSE = "LGPL"
-LIC_FILES_CHKSUM = "file://COPYING;md5=776e198b48f3a1004a437be10854038b"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=0da3ab9bb540414e574cbb2f96abcd81"
 HOMEPAGE = "http://www.rowetel.com/wordpress/?page_id=452"
+
+DEPENDS += " \
+    liquid-dsp \
+    jansson \
+    portaudio-v19 \
+    libsndfile1 \
+"
 
 inherit cmake
 
+SRCREV="${AUTOREV}"
+
 SRC_URI = " \
-    git://github.com/MonadicLabs/libcodec2.git \
+    git://github.com/quiet/quiet.git \
 "
 
-SRCREV = "95036d7e5c79d4570caeca626000889397f3f571"
 S = "${WORKDIR}/git"
 
 OECMAKE_GENERATOR = "Unix Makefiles"
-EXTRA_OECMAKE += "-DUNITTEST=OFF -DCMAKE_CROSSCOMPILING=ON"
+# EXTRA_OECMAKE += "-DUNITTEST=OFF -DCMAKE_CROSSCOMPILING=ON"
 
 # PACKAGECONFIG ??= "tcp"
 # PACKAGECONFIG[tcp] = "-Dtcp=true,-Dtcp=false"
@@ -24,3 +32,5 @@ do_install_append() {
     # them
     # rm -rf ${D}${datadir}/vala
 }
+
+INSANE_SKIP_${PN}-dev += "dev-elf"

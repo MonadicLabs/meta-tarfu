@@ -1,19 +1,19 @@
-SUMMARY = "Very low bitrate voice codec"
+SUMMARY = "FEC library"
 LICENSE = "LGPL"
-LIC_FILES_CHKSUM = "file://COPYING;md5=776e198b48f3a1004a437be10854038b"
+LIC_FILES_CHKSUM = "file://README;md5=90f14f03092c6727d6b1f6564602a571"
 HOMEPAGE = "http://www.rowetel.com/wordpress/?page_id=452"
 
 inherit cmake
 
 SRC_URI = " \
-    git://github.com/MonadicLabs/libcodec2.git \
+    git://github.com/quiet/libfec.git \
 "
 
-SRCREV = "95036d7e5c79d4570caeca626000889397f3f571"
+SRCREV = "9750ca0a6d0a786b506e44692776b541f90daa91"
 S = "${WORKDIR}/git"
 
 OECMAKE_GENERATOR = "Unix Makefiles"
-EXTRA_OECMAKE += "-DUNITTEST=OFF -DCMAKE_CROSSCOMPILING=ON"
+# EXTRA_OECMAKE += "-DUNITTEST=OFF -DCMAKE_CROSSCOMPILING=ON"
 
 # PACKAGECONFIG ??= "tcp"
 # PACKAGECONFIG[tcp] = "-Dtcp=true,-Dtcp=false"
